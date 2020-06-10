@@ -6,4 +6,4 @@ draft: false
 
 ## Coming soon
 
-C++ Oxford is coming soon.
+C++ Oxford is coming soon!
