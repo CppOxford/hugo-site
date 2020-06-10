@@ -32,28 +32,20 @@ jobs:
         with:
           repository: CppOxford/cppoxford.github.io
           token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
-          path: live-site
+          path: cppoxford.github.io
           fetch-depth: 0
       
-      - name: test
+      - name: deploy website
         run: |
-          ls -l
-          cd live-site
-          ls -l
-
-      # - name: deploy website
-      #   run: |
-      #     git clone https://github.com/CppOxford/cppoxford.github.io.git
-      #     rm cppoxford.github.io/404.html
-      #     rm cppoxford.github.io/index.html
-      #     rm cppoxford.github.io/sitemap.xml
-      #     rm -rf cppoxford.github.io/css
-      #     rm -rf cppoxford.github.io/events
-      #     rm -rf cppoxford.github.io/images
-      #     rm -rf cppoxford.github.io/people
-      #     rm -rf cppoxford.github.io/site-notice
-      #     cp -r public/* cppoxford.github.io
-      #     cd cppoxford.github.io
-      #     git add --all
-      #     git -c user.name='github-action' -c user.email='github-action' commit -a -m "deploy website"
-      #   working-directory: live-site
+          rm cppoxford.github.io/404.html
+          rm cppoxford.github.io/index.html
+          rm cppoxford.github.io/sitemap.xml
+          rm -rf cppoxford.github.io/css
+          rm -rf cppoxford.github.io/events
+          rm -rf cppoxford.github.io/images
+          rm -rf cppoxford.github.io/people
+          rm -rf cppoxford.github.io/site-notice
+          cp -r public/* cppoxford.github.io
+          cd cppoxford.github.io
+          git add --all
+          git -c user.name='github-action' -c user.email='github-action' commit -a -m "deploy website"
