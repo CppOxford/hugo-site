@@ -1,0 +1,39 @@
+name: Deploy website
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build-and-test:
+    name: validate and deploy files
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install hugo
+        run: |
+          snap install hugo
+
+      - name: build website
+        run: |
+          hugo
+
+      - name: deploy website
+        run: |
+          git clone https://github.com/CppOxford/cppoxford.github.io.git
+          rm cppoxford.github.io/404.html
+          rm cppoxford.github.io/index.html
+          rm cppoxford.github.io/sitemap.xml
+          rm -rf cppoxford.github.io/css
+          rm -rf cppoxford.github.io/events
+          rm -rf cppoxford.github.io/images
+          rm -rf cppoxford.github.io/people
+          rm -rf cppoxford.github.io/site-notice
+          cp -r public/* cppoxford.github.io
+          cd cppoxford.github.io
+          git add --all
+          git -c user.name='github-action' -c user.email='github-action' commit -a -m "deploy website"
