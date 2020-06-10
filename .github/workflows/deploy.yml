@@ -24,6 +24,8 @@ jobs:
       - name: build website
         run: |
           hugo
+        env:
+          GIT_CONFIG_NOSYSTEM: true
 
       - name: fetch live site repo
         uses: actions/checkout@v2
