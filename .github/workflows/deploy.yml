@@ -38,6 +38,8 @@ jobs:
       - name: test
         run: |
           ls -l
+          cd live-site
+          ls -l
 
       # - name: deploy website
       #   run: |
