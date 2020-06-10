@@ -30,7 +30,7 @@ jobs:
       - name: fetch live site repo
         uses: actions/checkout@v2
         with:
-          repository: my-org/my-private-tools
+          repository: CppOxford/cppoxford.github.io
           token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
           path: live-site
           fetch-depth: 0
