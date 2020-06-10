@@ -1,0 +1,27 @@
+<nav class="nav">
+
+  <div class="nav-logo">
+    <a href="{{ .Site.BaseURL }}" title="Home">
+        <img src="{{ .Site.BaseURL }}images/{{ .Site.Params.logo.url }}"
+             alt="{{ .Site.Params.logo.alt }}">
+         </a>
+  </div>
+
+  <div class="nav-links" id="nav-links-id">
+    <a href="javascript:void(0);" class="nav-icon" onclick="expandMenu()">&#9776;</a>
+    {{ range .Site.Menus.main }}
+    <a href="{{ .URL }}">{{ .Name }}</a>
+    {{ end }}
+  </div>
+</nav>
+
+<script>
+  function expandMenu() {
+    var x = document.getElementById("nav-links-id");
+    if (x.className === "nav-links") {
+      x.className += " responsive";
+    } else {
+      x.className = "nav-links";
+    }
+  }
+</script>

@@ -1,0 +1,24 @@
+<footer class="footer">
+  <ul class="footer-links">
+    <li>
+      <a href="mailto:fergus.cooper@cs.ox.ac.uk" title="Send me an email"><i class="fas fa-envelope-square"></i></a>
+      <a href="https://github.com/" title="Check out our GitHub"><i class="fab fa-github-square"></i></a>
+      <a href="https://twitter.com/" title="Follow C++ Oxford on Twitter"><i class="fab fa-twitter-square"></i></a>
+    </li>
+    {{ if .GitInfo }}
+    <li>
+      Page updated: <a href="https://github.com/CppOxford/hugo-site/commit/{{ .GitInfo.Hash }}">{{ .GitInfo.AuthorDate.Format "2006-01-02" }}</a>
+    </li>
+    {{ end }}
+    <li>
+      <a href="{{ .Site.BaseURL }}site-notice">{{ i18n "siteNotice" }}</a>
+    </li>
+  </ul>
+</footer>
+
+</div>
+
+{{ partial "back-to-top.html" . }}
+
+</body>
+</html>

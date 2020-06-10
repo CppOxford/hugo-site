@@ -1,0 +1,7 @@
+<div class="list">
+
+    {{ range where .Site.RegularPages "Section" "events" }}
+    {{ partial "event.html" . }}
+    {{ end }}
+
+</div>
