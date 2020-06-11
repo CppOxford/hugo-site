@@ -35,18 +35,19 @@ jobs:
           path: cppoxford.github.io
           fetch-depth: 0
       
-      - name: deploy website
+      - name: clean live site repo
+        working-directory: cppoxford.github.io
+        # this should not remove hidden files (.git)
         run: |
-          rm cppoxford.github.io/404.html
-          rm cppoxford.github.io/index.html
-          rm cppoxford.github.io/sitemap.xml
-          rm -rf cppoxford.github.io/css
-          rm -rf cppoxford.github.io/events
-          rm -rf cppoxford.github.io/images
-          rm -rf cppoxford.github.io/people
-          rm -rf cppoxford.github.io/site-notice
+          rm -rf *
+      
+      - name: copy to live site repo
+        run: |
           cp -r public/* cppoxford.github.io
-          cd cppoxford.github.io
+      
+      - name: deploy live site
+        working-directory: cppoxford.github.io
+        run: |
           git add --all
           git -c user.name='github-action' -c user.email='github-action' commit -a -m "deploy website"
           git push
