@@ -48,6 +48,8 @@ jobs:
       - name: deploy live site
         working-directory: cppoxford.github.io
         run: |
+          git config user.name "github-action"
+          git config user.email "github-action"
           git add --all
-          git -c user.name='github-action' -c user.email='github-action' commit -a -m "deploy website"
+          git commit -m "deploy website" || echo "No changes to commit"
           git push
